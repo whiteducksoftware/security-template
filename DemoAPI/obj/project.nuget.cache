@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "apDUIk8cSW0wTy++mxUr4nkU9pvmFc6Wxt+w7UryLZ8QE6fYhpkJVKTKAJbXI7lWyqpwg/9M91HlT426HtaKAw==",
+  "success": true,
+  "projectFilePath": "/Users/stivik/Dev/BachelorThesis/sku-bachelor-thesis-work-space/DemoAPI/DemoAPI.csproj",
+  "expectedPackageFiles": [
+    "/Users/stivik/.nuget/packages/microsoft.extensions.apidescription.server/3.0.0/microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "/Users/stivik/.nuget/packages/microsoft.openapi/1.2.3/microsoft.openapi.1.2.3.nupkg.sha512",
+    "/Users/stivik/.nuget/packages/swashbuckle.aspnetcore/6.2.3/swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
+    "/Users/stivik/.nuget/packages/swashbuckle.aspnetcore.swagger/6.2.3/swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "/Users/stivik/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.2.3/swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
+    "/Users/stivik/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.2.3/swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
+  ],
+  "logs": []
+}
