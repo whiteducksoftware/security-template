@@ -48,8 +48,8 @@ jobs:
 
       - name: 'Build the Container image'
         run: |
-          echo "Building the container image for ${{ matix.project.name }}..."
-          docker build -t ${{ matix.project.image }} -f ${{ matix.project.path }}/Dockerfile ${{ matix.project.path }} 
+          echo "Building the container image for ${{ matrix.project.name }}..."
+          docker build -t ${{ matrix.project.image }} -f ${{ matrix.project.path }}/Dockerfile ${{ matrix.project.path }} 
 
       - name: 'Run Snyk to check Docker image for vulnerabilities'
         # Snyk can be used to break the build when it detects vulnerabilities.
@@ -62,8 +62,8 @@ jobs:
           # or you can signup for free at https://snyk.io/login
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
-          image: ${{ matix.project.image }}
-          args: --file=${{ matix.project.path }}/Dockerfile
+          image: ${{ matrix.project.image }}
+          args: --file=${{ matrix.project.path }}/Dockerfile
 
       - name: Upload result to GitHub Code Scanning
         uses: github/codeql-action/upload-sarif@v2
