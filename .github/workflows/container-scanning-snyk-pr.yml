@@ -1,3 +1,4 @@
+# Runs the Snyk container scanning workflow on a pull request.
 name: Snyk Container (Pull-Request)
 
 on:
@@ -17,11 +18,11 @@ jobs:
       matrix:
         project:
           - name: API
-            path: ./src/DemoAPI
+            path: src/DemoAPI
             image: demoapi
-          #- name: Web
-          #  path: ./src/DemoFrontend
-          #  imasge: demofrontend
+          - name: Web
+            path: src/DemoFrontend
+            imasge: demofrontend
       
     steps:
       - name: 'Checkout Repository'

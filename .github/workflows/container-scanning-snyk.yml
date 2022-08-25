@@ -1,8 +1,7 @@
+# Runs the Snyk container scanning workflow reguraly on the main branch and publishes the results to GitHub Security.
 name: Snyk Container
 
 on:
-  push:
-    branches: [ "main" ]
   schedule:
     - cron: '0 0 * * 0'
 
