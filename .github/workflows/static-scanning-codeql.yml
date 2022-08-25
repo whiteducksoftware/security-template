@@ -6,7 +6,7 @@ on:
     branches: [main]
 
 jobs:
-  CodeQL-Build:
+  codeql-static-scan:
     runs-on: ubuntu-latest
 
     permissions:
