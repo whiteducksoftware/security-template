@@ -37,10 +37,10 @@ jobs:
         project:
           - name: API
             path: ./src/DemoAPI
-            image: DemoAPI
+            image: demoapi
           #- name: Web
           #  path: ./src/DemoFrontend
-          #  imasge: DemoFrontend
+          #  imasge: demofrontend
       
     steps:
       - name: 'Checkout Repository'
