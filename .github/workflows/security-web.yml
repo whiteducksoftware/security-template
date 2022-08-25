@@ -1,0 +1,35 @@
+# Runs the security scans on every pull request for the frontend. Includes: static code analysis, container analysis, and vulnerability scanning.
+name: Web Security Checks
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - src/DemoFrontend/**
+
+jobs:
+  security-scan:
+    runs-on: ubuntu-latest
+
+    permissions:
+      security-events: write
+      actions: read
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: "CodeQL Static Scanning"
+        continue-on-error: true 
+        uses: "./.github/templates/static-scanning-codeql"
+        with:
+          language: javascript
+
+      - name: "Snyk Container Scanning"
+        continue-on-error: true
+        uses: "./.github/templates/container-scanning-snyk"
+        with:
+          path: src/DemoFrontend
+          snyk_token: ${{ secrets.SNYK_TOKEN }}

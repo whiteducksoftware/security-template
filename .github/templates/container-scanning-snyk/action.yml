@@ -1,0 +1,35 @@
+name: container-scanning-snyk
+
+inputs:
+  path:
+    required: true
+    description: The path to the directory containing the Dockerfile.
+  snyk_token:
+    required: true
+    description: The Snyk API token.
+
+runs:
+    using: "composite"
+    steps:
+      - name: 'Build the Container image'
+        shell: bash
+        run: docker build -t snyk_image_testing -f ${{ inputs.path }}/Dockerfile ${{ inputs.path }} 
+
+      - name: 'Run Snyk to check Docker image for vulnerabilities'
+        # Snyk can be used to break the build when it detects vulnerabilities.
+        # In this case we want to upload the issues to GitHub Code Scanning
+        continue-on-error: true
+        uses: snyk/actions/docker@master
+        env:
+          # In order to use the Snyk Action you will need to have a Snyk API token.
+          # More details in https://github.com/snyk/actions#getting-your-snyk-token
+          # or you can signup for free at https://snyk.io/login
+          SNYK_TOKEN: ${{ inputs.snyk_token }}
+        with:
+          image: snyk_image_testing
+          args: --file=${{ inputs.path }}/Dockerfile
+
+      - name: Upload result to GitHub Code Scanning
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: snyk.sarif 

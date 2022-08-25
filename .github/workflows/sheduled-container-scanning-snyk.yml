@@ -1,0 +1,30 @@
+# Runs the Snyk container scanning workflow reguraly on the main branch and publishes the results to GitHub Security.
+name: Snyk Container
+
+on:
+  schedule:
+    - cron: '0 0 * * 0'
+
+permissions:
+  contents: read
+
+jobs:
+  snyk:
+    runs-on: ubuntu-latest
+  
+    permissions:
+      contents: read
+      security-events: write
+      
+    strategy:
+      matrix:
+        path: ['src/DemoAPI', 'src/DemoFrontend']
+      
+    steps:
+      - name: 'Checkout Repository'
+        uses: actions/checkout@v3
+
+      - name: "Snyk Container Scanning"
+        uses: "./.github/templates/container-scanning-snyk"
+        with:
+          path: ${{ matrix.path }}
