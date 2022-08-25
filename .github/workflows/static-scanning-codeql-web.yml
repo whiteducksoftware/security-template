@@ -3,7 +3,8 @@ name: "Static Code Scanning - CodeQL (Web)"
 
 on:
   pull_request:
-    branches: [main]
+    branches:
+      - main
     paths:
       - src/DemoFrontend
 
