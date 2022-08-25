@@ -2,6 +2,9 @@
 name: Snyk Container
 
 on:
+  pull_request:
+    branches:
+      - main
   schedule:
     - cron: '0 0 * * 0'
 
