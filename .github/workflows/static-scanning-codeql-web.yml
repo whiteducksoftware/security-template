@@ -7,7 +7,6 @@ on:
     paths:
       - src/DemoFrontend
 
-
 jobs:
   codeql-static-scan:
     runs-on: ubuntu-latest

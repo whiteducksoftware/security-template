@@ -5,6 +5,8 @@ on:
   pull_request:
     branches:
       - main
+    paths:
+      - src/DemoAPI
 
 permissions:
   contents: read
@@ -15,25 +17,13 @@ jobs:
   
     permissions:
       contents: read
-      
-    strategy:
-      matrix:
-        project:
-          - name: API
-            path: src/DemoAPI
-            image: demoapi
-          - name: Web
-            path: src/DemoFrontend
-            image: demofrontend
-      
+            
     steps:
       - name: 'Checkout Repository'
         uses: actions/checkout@v3
 
       - name: 'Build the Container image'
-        run: |
-          echo "Building the container image for ${{ matrix.project.name }}..."
-          docker build -t ${{ matrix.project.image }} -f ${{ matrix.project.path }}/Dockerfile ${{ matrix.project.path }} 
+        run: docker build -t demoapi -f src/DemoAPI/Dockerfile src/DemoAPI
 
       - name: 'Run Snyk to check Docker image for vulnerabilities'
         uses: snyk/actions/docker@master
@@ -43,5 +33,5 @@ jobs:
           # or you can signup for free at https://snyk.io/login
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
-          image: ${{ matrix.project.image }}
-          args: --file=${{ matrix.project.path }}/Dockerfile
+          image: demoapi
+          args: --file=src/DemoAPI/Dockerfile
