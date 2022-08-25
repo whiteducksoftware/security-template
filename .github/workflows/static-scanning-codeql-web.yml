@@ -1,9 +1,12 @@
 
-name: "Static Code Scanning - CodeQL"
+name: "Static Code Scanning - CodeQL (Web)"
 
 on:
   pull_request:
     branches: [main]
+    paths:
+      - src/DemoFrontend
+
 
 jobs:
   codeql-static-scan:
@@ -15,11 +18,6 @@ jobs:
       actions: read
       contents: read
 
-    strategy:
-      fail-fast: false
-      matrix:
-        language: ['csharp', 'javascript']
-
     steps:
       - name: 'Checkout Repository'
         uses: actions/checkout@v3
@@ -28,7 +26,7 @@ jobs:
         uses: github/codeql-action/init@v2
         with: 
           config-file: ./.github/configuration/codeql-config.yml
-          languages: ${{ matrix.language }}
+          languages: javascript
 
       - name: 'Autobuild Project(s)'
         uses: github/codeql-action/autobuild@v2
