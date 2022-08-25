@@ -6,7 +6,7 @@ on:
     branches:
       - main
     paths:
-      - src/DemoFrontend
+      - src/DemoFrontend/Dockerfile
 
 permissions:
   contents: read
