@@ -1,5 +1,5 @@
 # Runs the dependency-review workflow on a pull request.
-name: Dependency 
+name: Dependency Review
 
 on:
   pull_request:
