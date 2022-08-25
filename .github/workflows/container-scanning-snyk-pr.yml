@@ -22,7 +22,7 @@ jobs:
             image: demoapi
           - name: Web
             path: src/DemoFrontend
-            imasge: demofrontend
+            image: demofrontend
       
     steps:
       - name: 'Checkout Repository'
