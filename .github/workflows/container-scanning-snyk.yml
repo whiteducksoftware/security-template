@@ -22,9 +22,9 @@ jobs:
           - name: API
             path: src/DemoAPI
             image: demoapi
-          #- name: Web
-          #  path: src/DemoFrontend
-          #  imasge: demofrontend
+          - name: Web
+            path: src/DemoFrontend
+            imasge: demofrontend
       
     steps:
       - name: 'Checkout Repository'
