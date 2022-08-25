@@ -1,5 +1,10 @@
-name: 'Dependency Review'
-on: [pull_request]
+# Runs the dependency-review workflow on a pull request.
+name: Dependency 
+
+on:
+  pull_request:
+    branches:
+      - main
 
 permissions:
   contents: read
