@@ -1,10 +1,9 @@
 
-name: "Static Code Scanning - CodeQL (API)"
+name: "Static Code Scanning - CodeQL"
 
 on:
-  push:
-    paths:
-      - src/DemoAPI
+  pull_request:
+    branches: [main]
 
 jobs:
   codeql-static-scan:
@@ -16,6 +15,11 @@ jobs:
       actions: read
       contents: read
 
+    strategy:
+      fail-fast: false
+      matrix:
+        language: ['csharp', 'javascript']
+
     steps:
       - name: 'Checkout Repository'
         uses: actions/checkout@v3
@@ -24,7 +28,7 @@ jobs:
         uses: github/codeql-action/init@v2
         with: 
           config-file: ./.github/configuration/codeql-config.yml
-          languages: csharp
+          languages: ${{ matrix.language }}
 
       - name: 'Autobuild Project(s)'
         uses: github/codeql-action/autobuild@v2
