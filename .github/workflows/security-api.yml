@@ -1,5 +1,5 @@
 # Runs the security scans on every pull request for the api. Includes: static code analysis, container analysis, and vulnerability scanning.
-name: Web Security Checks
+name: Security Checks runner
 
 on:
   pull_request:
