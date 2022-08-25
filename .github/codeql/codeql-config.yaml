@@ -1,0 +1,9 @@
+name: "white duck CodeQL configuration"
+
+qeuries:
+  - uses: security-and-quality
+
+paths:
+  - src
+paths-ignore:
+  - .github
