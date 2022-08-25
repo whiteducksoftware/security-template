@@ -21,17 +21,17 @@ jobs:
         language: ['csharp', 'javascript']
 
     steps:
-      - name: Checkout repository
+      - name: 'Checkout Repository'
         uses: actions/checkout@v3
 
-      - name: Initialize CodeQL
+      - name: 'Initialize CodeQL'
         uses: github/codeql-action/init@v2
         with: 
           config-file: ./.github/configuration/codeql-config.yml
           languages: ${{ matrix.language }}
 
-      - name: Autobuild
+      - name: 'Autobuild Project(s)'
         uses: github/codeql-action/autobuild@v2
 
-      - name: Perform CodeQL Analysis
+      - name: 'Perform CodeQL Analysis'
         uses: github/codeql-action/analyze@v2
