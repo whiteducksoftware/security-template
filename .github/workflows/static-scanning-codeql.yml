@@ -15,16 +15,20 @@ jobs:
       actions: read
       contents: read
 
+    strategy:
+      fail-fast: false
+      matrix:
+        language: ['csharp', 'javascript']
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Initializes the CodeQL tools for scanning.
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v2
         with: 
-          config-file: ./.github/codeql/codeql-config.yaml
-          languages: javascript, csharp
+          config-file: ./.github/configuration/codeql-config.yml
+          languages: ${{ matrix.language }}
 
       - name: Autobuild
         uses: github/codeql-action/autobuild@v2
