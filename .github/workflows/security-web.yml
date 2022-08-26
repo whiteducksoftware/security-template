@@ -22,13 +22,11 @@ jobs:
         uses: actions/checkout@v2
 
       - name: "CodeQL Static Scanning"
-        continue-on-error: true 
         uses: "./.github/templates/static-scanning-codeql"
         with:
           language: javascript
 
       - name: "Snyk Container Scanning"
-        continue-on-error: true
         uses: "./.github/templates/container-scanning-snyk"
         with:
           path: src/DemoFrontend

@@ -5,5 +5,7 @@ qeuries:
 
 paths:
   - src
+
 paths-ignore:
   - .github
+  - docs
