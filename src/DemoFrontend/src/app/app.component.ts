@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'DemoFrontend';
+  discordApiToken = '8dyfuiRvqFvVc3RRr_edRk-fz__JItpP'; // Todo: Remove this later, this is just for testing purposes
 
   endsWith(x: string, y: string) {
     let index = x.lastIndexOf(y);
