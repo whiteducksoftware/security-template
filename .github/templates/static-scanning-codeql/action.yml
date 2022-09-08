@@ -1,24 +1,24 @@
 name: static-scanning-codeql
 
 inputs:
-    language:
-        required: true
-        description: The language of the code to be scanned.
+  language:
+      required: true
+      description: The language of the code to be scanned.
 
 runs:
-    using: "composite"
-    steps:
-      - name: 'Checkout Repository'
-        uses: actions/checkout@v3
+  using: "composite"
+  steps:
+    - name: 'Checkout Repository'
+      uses: actions/checkout@v3
 
-      - name: 'Initialize CodeQL'
-        uses: github/codeql-action/init@v2
-        with: 
-          config-file: ./.github/configuration/codeql-config.yml
-          languages: ${{ inputs.language }}
+    - name: 'Initialize CodeQL'
+      uses: github/codeql-action/init@v2
+      with: 
+        config-file: ./.github/configuration/codeql-config.yml
+        languages: ${{ inputs.language }}
 
-      - name: 'Autobuild Project(s)'
-        uses: github/codeql-action/autobuild@v2
+    - name: 'Autobuild Project(s)'
+      uses: github/codeql-action/autobuild@v2
 
-      - name: 'Perform CodeQL Analysis'
-        uses: github/codeql-action/analyze@v2
+    - name: 'Perform CodeQL Analysis'
+      uses: github/codeql-action/analyze@v2
