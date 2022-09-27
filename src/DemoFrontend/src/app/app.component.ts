@@ -11,12 +11,7 @@ export class AppComponent {
 
   search(term: string) {
     var href = document.location.href,
-      deflt = href.substring(href.indexOf("term=") + 5);
-    database.write("recent_searches", deflt);
-  }
-
-  get_recent_searches() {
-    var searches = database.get("recent_searches");
-    document.write("<div>Recents Searches: " + searches + "</div>");
+      searchTerm = href.substring(href.indexOf("term=") + 5);
+    document.write("<div>You searched for: " + searchTerm + "</div>");
   }
 }
