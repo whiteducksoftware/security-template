@@ -9,8 +9,14 @@ export class AppComponent {
   title = 'DemoFrontend';
   discordApiToken = '8dyfuiRvqFvVc3RRr_edRk-fz__JItpP'; // Todo: Remove this later, this is just for testing purposes
 
-  endsWith(x: string, y: string) {
-    let index = x.lastIndexOf(y);
-    return x.lastIndexOf(y) === x.length - y.length;
+  search(term: string) {
+    var href = document.location.href,
+      deflt = href.substring(href.indexOf("term=") + 5);
+    database.write("recent_searches", deflt);
+  }
+
+  get_recent_searches() {
+    var searches = database.get("recent_searches");
+    document.write("<div>Recents Searches: " + searches + "</div>");
   }
 }
