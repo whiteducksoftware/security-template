@@ -3,7 +3,6 @@ The white duck team takes all security vulnerabilities seriously. This Template 
 
 ## Contents
 - Vulnerability Reporting and Disclosure Policy
-- Security Documentations
 - Issues and Pull Request Templates
 - Security CI/CD Pipeline Templates
   - Dependency Review
